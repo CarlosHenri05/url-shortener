@@ -1,9 +1,15 @@
 export class RequestUrlDto {
-  originalUrl: String;
+  originalUrl: string;
+
+  getOriginalUrl() {
+    return this.originalUrl;
+  }
+
+  setOriginalUrl(originalUrl: string) {
+    this.originalUrl = originalUrl;
+  }
 }
 
 export class ResponseUrlDto {
-  originalUrl: String;
-
   shortUrl: String;
 }
