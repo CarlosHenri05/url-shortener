@@ -6,7 +6,7 @@ import { Url, urlSchema } from './models/url.models';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://root:example@localhost:27017'),
+    MongooseModule.forRoot('mongodb://root:example@localhost:27017'), // for local development, just testing
     MongooseModule.forFeature([{ name: Url.name, schema: urlSchema }]),
   ],
   controllers: [UrlController],
