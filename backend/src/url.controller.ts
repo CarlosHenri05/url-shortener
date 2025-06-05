@@ -1,19 +1,27 @@
-import { Controller, Post, Get } from '@nestjs/common';
+import { Controller, Post, Get, Body, Query, Res } from '@nestjs/common';
 import { RequestUrlDto, ResponseUrlDto } from './dto/url.dto';
-import { InjectModel } from '@nestjs/mongoose';
 import { UrlService } from './url.service';
+import { Response } from 'express';
 
-@Controller('api')
+@Controller('/api')
 export class UrlController {
   constructor(private readonly urlService: UrlService) {}
 
   @Post('/shorten')
-  createShortUrl(body: RequestUrlDto): Promise<void> {
-    return this.urlService.createShortUrl(body.getOriginalUrl());
+  async createShortUrl(
+    @Body() body: RequestUrlDto,
+  ): Promise<ResponseUrlDto | void> {
+    return this.urlService.createShortUrl(body.originalUrl);
   }
 
   @Get('/shorten')
-  getShortUrl(body: RequestUrlDto): Promise<ResponseUrlDto> {
-    return this.urlService.getShortUrl(body.getOriginalUrl());
+  async getShortUrl(@Query('shortUrl') shortUrl: string, @Res() res: Response) {
+    const url = await this.urlService.getShortUrl(shortUrl);
+
+    if (url) {
+      return res.redirect(url.originalUrl);
+    }
+
+    return res.status(404).send('Url not found');
   }
 }
