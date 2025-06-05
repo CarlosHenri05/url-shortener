@@ -3,6 +3,7 @@
 /node_modules
 /build
 backend/node_modules
+backend/dist
 
 # Logs
 logs

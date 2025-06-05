@@ -1,6 +1,7 @@
 services:
   mongo:
     image: mongo
+    container_name: mongo
     restart: always
     env_file:
       - ./backend/.env
