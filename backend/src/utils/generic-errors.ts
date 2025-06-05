@@ -1,4 +1,4 @@
-export class UrlAlreadyShortened extends Error {
+export class UrlNotFound extends Error {
   message: string;
   cause: any;
 
