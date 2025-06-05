@@ -1,15 +1,13 @@
+import { ApiProperty } from '@nestjs/swagger';
+import { IsUrl } from 'class-validator';
+
 export class RequestUrlDto {
+  @IsUrl()
+  @ApiProperty({ example: 'https://example.com' })
   originalUrl: string;
-
-  getOriginalUrl() {
-    return this.originalUrl;
-  }
-
-  setOriginalUrl(originalUrl: string) {
-    this.originalUrl = originalUrl;
-  }
 }
 
 export class ResponseUrlDto {
-  shortUrl: String;
+  @ApiProperty({ example: 'http://short.ly/abc123' })
+  shortUrl: string;
 }
