@@ -81,9 +81,11 @@ Resposta:
 {
   "shortUrl": "http://localhost:3000/meulink"
 }
+````
+
 🔁 Redirecionar
 GET /:slug
-````
+
 Exemplo:
 http://localhost:3000/meulink redireciona para https://exemplo.com
 
