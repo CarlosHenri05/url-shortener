@@ -57,8 +57,9 @@ backend/
 ```bash
 # Subir containers da aplicação e do MongoDB
 docker-compose up --build
+````
 💻 Rodando localmente (sem Docker)
-
+````bash
 # Instalar dependências
 npm install
 
